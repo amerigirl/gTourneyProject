@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head">
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
 
 <div th:replace="fragments :: page-header"></div>
+<h1 th:replace="fragments :: title" class="text-warning">Create Events</h1>
+<nav th:replace="fragments :: navigation"></nav>
 
 <div class="container body-content">
 
