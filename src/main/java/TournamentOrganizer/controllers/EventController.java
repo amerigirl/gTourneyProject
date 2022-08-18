@@ -2,7 +2,6 @@ package TournamentOrganizer.controllers;
 
 import TournamentOrganizer.data.EventRepository;
 import TournamentOrganizer.models.Event;
-import TournamentOrganizer.models.TypeOfTournament;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,7 +36,6 @@ public class EventController {
 
         model.addAttribute("title", "Create Event");
         model.addAttribute(new Event());
-        model.addAttribute("typeOfTournaments", TypeOfTournament.values());
         return sendToTemplateViewEventsCreate;
     }
 
@@ -113,7 +111,6 @@ public class EventController {
 
         model.addAttribute("title", "Edit Event");
         model.addAttribute(new Event());
-        model.addAttribute("typeOfTournaments", TypeOfTournament.values());
         return sendToTemplateViewEventsEdit;
     }
 

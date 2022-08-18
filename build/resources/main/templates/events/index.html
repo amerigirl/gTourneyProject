@@ -18,13 +18,10 @@
         <th class="text-white" style="color: white">Name</th>
         <th class="text-white" style="color: white">Description</th>
         <th class="text-white" style="color: white">Location</th>
-        <th class="text-white" style="color: white">Contact Email</th>
+        <th class="text-white" style="color: white">Competitive Level</th>
         <th class="text-white" style="color: white">Date</th>
+        <th class="text-white" style="color: white">Summary</th>
         <th class="text-white" style="color: white">Entry Fee</th>
-        <th class="text-white" style="color: white">Type Of Tournament</th>
-        <th class="text-white" style="color: white">Total Audience Capacity</th>
-        <th class="text-white" style="color: white">Number Of Contestants</th>
-
 
     </tr>
     </thead>
@@ -33,12 +30,11 @@
         <td th:text="${event.name}" class="text-white bg-dark" style="color: white"></td>
         <td th:text="${event.eventDetails.description}" class="text-white bg-dark" style="color: white"></td>
         <td th:text="${event.eventDetails.location}" class="text-white bg-dark" style="color: white"></td>
-        <td th:text="${event.eventDetails.contactEmail}" class="text-white bg-dark" style="color: white"></td>
+        <td th:text="${event.eventDetails.competitiveLevel}" class="text-white bg-dark" style="color: white"></td>
         <td th:text="${event.eventDetails.date}" class="text-white bg-dark" style="color: white"></td>
+        <td th:text="${event.eventDetails.summary}" class="text-white bg-dark" style="color: white"></td>
         <td th:text="${event.eventDetails.entryFee}" class="text-white bg-dark" style="color: white"></td>
-        <td th:text="${event.eventDetails.typeOfTournament}" class="text-white bg-dark" style="color: white"></td>
-        <td th:text="${event.eventDetails.totalAudienceCapacity}" class="text-white bg-dark" style="color: white"></td>
-        <td th:text="${event.eventDetails.numberOfContestants}" class="text-white bg-dark" style="color: white"></td>
+
 
     </tr>
 </table>

@@ -20,46 +20,39 @@ public class EventDetails extends AbstractEntity {
     @Size(max = 50, message = "Location is too long!")
     private String location;
 
-    @NotBlank(message = "Email required!")
-    @Email(message = "Invalid email! Try again!")
-    private String contactEmail;
+    @NotBlank(message = "Competitive level required!")
+    @NotNull
+    private String competitiveLevel;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotBlank(message = "Date is required!")
     @NotNull
     private String date;
 
+    @NotBlank(message = "Summary is required!")
+    @NotNull
+    @Size(max = 100, message = "Summary is too long!")
+    private String summary;
+
     @NotBlank(message = "Entry Fee is required!")
     @NotNull
     private String entryFee;
 
-    @NotNull
-    private TypeOfTournament typeOfTournament;
-
-    @NotBlank(message = "Total audience capacity is required!")
-    @NotNull
-    private String totalAudienceCapacity;
-
-    private String numberOfContestants;
-
     public EventDetails(
             String description,
             String location,
-            String contactEmail,
+            String competitiveLevel,
             String date,
-            String entryFee,
-            TypeOfTournament typeOfTournament,
-            String totalAudienceCapacity,
-            String numberOfContestants
+            String summary,
+            String entryFee
+
     ) {
         this.description = description;
         this.location = location;
-        this.contactEmail = contactEmail;
+        this.competitiveLevel = competitiveLevel;
         this.date = date;
+        this.summary = summary;
         this.entryFee = entryFee;
-        this.typeOfTournament = typeOfTournament;
-        this.totalAudienceCapacity = totalAudienceCapacity;
-        this.numberOfContestants = numberOfContestants;
     }
 
     public EventDetails () {}
@@ -80,12 +73,12 @@ public class EventDetails extends AbstractEntity {
         this.location = location;
     }
 
-    public String getContactEmail() {
-        return contactEmail;
+    public String getCompetitiveLevel() {
+        return competitiveLevel;
     }
 
-    public void setContactEmail(String contactEmail) {
-        this.contactEmail = contactEmail;
+    public void setCompetitiveLevel(String competitiveLevel) {
+        this.competitiveLevel = competitiveLevel;
     }
 
     public String getDate() {
@@ -96,35 +89,19 @@ public class EventDetails extends AbstractEntity {
         this.date = date;
     }
 
+    public String getSummary() {
+        return summary;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
     public String getEntryFee() {
         return entryFee;
     }
 
     public void setEntryFee(String entryFee) {
         this.entryFee = entryFee;
-    }
-
-    public TypeOfTournament getTypeOfTournament() {
-        return typeOfTournament;
-    }
-
-    public void setTypeOfTournament(TypeOfTournament typeOfTournament) {
-        this.typeOfTournament = typeOfTournament;
-    }
-
-    public String getTotalAudienceCapacity() {
-        return totalAudienceCapacity;
-    }
-
-    public void setTotalAudienceCapacity(String totalAudienceCapacity) {
-        this.totalAudienceCapacity = totalAudienceCapacity;
-    }
-
-    public String getNumberOfContestants() {
-        return numberOfContestants;
-    }
-
-    public void setNumberOfContestants(String numberOfContestants) {
-        this.numberOfContestants = numberOfContestants;
     }
 }
