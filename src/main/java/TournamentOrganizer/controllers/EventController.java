@@ -2,6 +2,7 @@ package TournamentOrganizer.controllers;
 
 import TournamentOrganizer.data.EventRepository;
 import TournamentOrganizer.models.Event;
+import TournamentOrganizer.models.EventDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -105,19 +106,30 @@ public class EventController {
         return sendToTemplateViewEventsDetail;
     }
 
-    @GetMapping(value = "edit")
-    public String displayEditEventForm(Model model) {
+    @GetMapping(value = "edit/{eventId}")
+    public String displayEditEventForm(
+            Model model,
+            @PathVariable int eventId) {
+        Optional<Event> event = eventRepository.findById(eventId);
+        Event eventToBeEdit = event.get();
+        model.addAttribute("event", eventToBeEdit);
+        String title = "Edti Event: " + eventToBeEdit.getName() + " (id=" + eventToBeEdit.getId() + ")";
+        model.addAttribute("title", title);
         String sendToTemplateViewEventsEdit =  "events/edit";
-
-        model.addAttribute("title", "Edit Event");
-        model.addAttribute(new Event());
         return sendToTemplateViewEventsEdit;
     }
 
     @PutMapping(value = "edit")
-    public String processEditEventForm(Event editEvent, Errors errors, Model model) {
-        String sendToTemplateViewEventsEdit = "events/edit";
-
-        return sendToTemplateViewEventsEdit;
+    public String processEditEventForm(
+            int eventId,
+            String name,
+            EventDetails eventDetails
+    ) {
+        Optional<Event> event = eventRepository.findById(eventId);
+        Event eventToBeEdit = event.get();
+        eventToBeEdit.setName(name);
+        eventToBeEdit.setEventDetails(eventDetails);
+        String redirect = "redirect:";
+        return redirect;
     }
 }
