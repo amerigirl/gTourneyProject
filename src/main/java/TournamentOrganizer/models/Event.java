@@ -52,5 +52,8 @@ public class Event extends AbstractEntity {
     public String toString() {
         return name;
     }
+
+    public void setEventDetails(String description, String location, String competitiveLevel, String date, String summary, String entryFee) {
+    }
 }
 

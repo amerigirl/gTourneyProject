@@ -21,7 +21,6 @@ public class EventController {
 
     @GetMapping
     public String displayEvents(
-            @RequestParam(required = false) Integer categoryId,
             Model model
     ) {
         String sendToTemplateViewEventsIndex = "events/index";
@@ -109,24 +108,32 @@ public class EventController {
     @GetMapping(value = "edit/{eventId}")
     public String displayEditEventForm(
             Model model,
-            @PathVariable int eventId) {
+            @PathVariable int eventId
+    ) {
         Optional<Event> event = eventRepository.findById(eventId);
         Event eventToBeEdit = event.get();
         model.addAttribute("event", eventToBeEdit);
-        String title = "Edti Event: " + eventToBeEdit.getName() + " (id=" + eventToBeEdit.getId() + ")";
+        String title = "Edit Event: " + eventToBeEdit.getName() + " (id=" + eventToBeEdit.getId() + ")";
         model.addAttribute("title", title);
         String sendToTemplateViewEventsEdit =  "events/edit";
         return sendToTemplateViewEventsEdit;
     }
 
-    @PutMapping(value = "edit")
+    @PostMapping(value = "edit")
     public String processEditEventForm(
             int eventId,
             String name,
+            String description,
+            String location,
+            String competitiveLevel,
+            String date,
+            String summary,
+            String entryFee,
             EventDetails eventDetails
     ) {
         Optional<Event> event = eventRepository.findById(eventId);
         Event eventToBeEdit = event.get();
+        eventToBeEdit.getId();
         eventToBeEdit.setName(name);
         eventToBeEdit.setEventDetails(eventDetails);
         String redirect = "redirect:";
