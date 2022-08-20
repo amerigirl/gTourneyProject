@@ -133,9 +133,10 @@ public class EventController {
     ) {
         Optional<Event> event = eventRepository.findById(eventId);
         Event eventToBeEdit = event.get();
-        eventToBeEdit.getId();
         eventToBeEdit.setName(name);
-        eventToBeEdit.setEventDetails(eventDetails);
+        // Name is now able to be edited, but I am still working on how to update the
+        // fields in EventDetails.
+        eventRepository.save(eventToBeEdit);
         String redirect = "redirect:";
         return redirect;
     }
