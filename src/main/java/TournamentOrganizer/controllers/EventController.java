@@ -1,7 +1,7 @@
 package TournamentOrganizer.controllers;
 
-import TournamentOrganizer.data.EventRepository;
 import TournamentOrganizer.models.Event;
+import TournamentOrganizer.models.data.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

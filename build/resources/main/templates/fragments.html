@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:th="http://www.thymeleaf.org/">
 
 <head th:fragment="head">
-    <meta charset="UTF-8">
+
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link th:href="@{/css/index.css}" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link th:href="@{/css/signup.css}" rel="stylesheet" />
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
     <title th:text="'Tournament Organizer' + ${title == null ? '' : ' :: ' + title}">Tournament Organizer</title>
 </head>
 
 <body>
 
 <div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <div class="navbar-header">
                     <button class="navbar-toggle" data-target="#mobile_menu" data-toggle="collapse"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     <a href="#" class="navbar-brand">Tournament Organizer</a>
@@ -30,18 +31,23 @@
                             </form>
                         </li>
                     </ul>
-    <nav th:fragment="navigation" class="navbar navbar-dark bg-dark">
-                    <h1 th:text="${title}">Tournament Organizer</h1>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up</a></li>
-                        <li><a href="/events"><span class="glyphicon glyphicon-all events"></span>All Events</a></li>
-                        <li><a href="/events/create"><span class="glyphicon glyphicon-create event"></span>Create Event</a></li>
-                        <li><a href="/events/delete"><span class="glyphicon glyphicon-delete event"></span>Delete Event</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up</a>
+                        </li>
                     </ul>
-    </nav>
-            </div>
 </div>
+
+<nav th:fragment="navigation" class="navbar navbar-dark bg-dark">
+    <h1 th:text="${title}">Tournament Organizer</h1>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up</a></li>
+        <li><a href="/events"><span class="glyphicon glyphicon-all events"></span>All Events</a></li>
+        <li><a href="/events/create"><span class="glyphicon glyphicon-create event"></span>Create Event</a></li>
+        <li><a href="/events/delete"><span class="glyphicon glyphicon-delete event"></span>Delete Event</a></li>
+    </ul>
+</nav>
 
 </body>
 </html>
