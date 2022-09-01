@@ -86,24 +86,6 @@ public class EventController {
         return redirect;
     }
 
-    @GetMapping(value = "detail")
-    public String displayEventDetails (
-            @RequestParam Integer eventId,
-            Model model
-    ) {
-        String sendToTemplateViewEventsDetail = "events/detail";
-        Optional<Event> result = eventRepository.findById(eventId);
-
-        if (result.isEmpty()) {
-            model.addAttribute("title", "Invalid Event ID: " + eventId);
-        } else {
-            Event event = result.get();
-            model.addAttribute("title", event.getName() + " Details");
-            model.addAttribute("event", event);
-        }
-        return sendToTemplateViewEventsDetail;
-    }
-
     @GetMapping(value = "edit/{eventId}")
     public String displayEditEventForm(
             Model model,
@@ -120,24 +102,35 @@ public class EventController {
 
     @PostMapping(value = "edit")
     public String processEditEventForm(
+//            Model model,
+//            Errors errors,
             int eventId,
             String name,
             String description,
-            String location,
+            String city,
+            String state,
+            String address,
             String competitiveLevel,
             String date,
             String summary,
             String entryFee
     ) {
+        String sendToTemplateViewEventsEdit =  "events/edit";
         Optional<Event> event = eventRepository.findById(eventId);
         Event eventToBeEdit = event.get();
         eventToBeEdit.setName(name);
         eventToBeEdit.setDescription(description);
-        eventToBeEdit.setLocation(location);
+        eventToBeEdit.setCity(city);
+        eventToBeEdit.setState(state);
+        eventToBeEdit.setAddress(address);
         eventToBeEdit.setCompetitiveLevel(competitiveLevel);
         eventToBeEdit.setDate(date);
         eventToBeEdit.setSummary(summary);
         eventToBeEdit.setEntryFee(entryFee);
+//        if(errors.hasErrors()) {
+//            model.addAttribute("title", "Edit Event");
+//            return sendToTemplateViewEventsEdit;
+//        }
         eventRepository.save(eventToBeEdit);
         String redirect = "redirect:";
         return redirect;

@@ -11,17 +11,27 @@ public class Event extends AbstractEntity {
 
     @NotBlank(message = "Name is required!")
     @NotNull
-    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters!")
+    @Size(min = 3, max = 100, message = "Name must be between 3 and 50 characters!")
     private String name;
 
     @NotBlank(message = "Description is required!")
     @Size(max = 500, message = "Description too long!")
     private String description;
 
-    @NotBlank(message = "Location is required")
+    @NotBlank(message = "City is required")
     @NotNull
-    @Size(max = 50, message = "Location is too long!")
-    private String location;
+    @Size(max = 100, message = "City is too long!")
+    private String city;
+
+    @NotBlank(message = "State is required")
+    @NotNull
+    @Size(max = 100, message = "State is too long!")
+    private String state;
+
+    @NotBlank(message = "Address is required")
+    @NotNull
+    @Size(max = 100, message = "Address is too long!")
+    private String address;
 
     @NotBlank(message = "Competitive level required!")
     @NotNull
@@ -34,17 +44,19 @@ public class Event extends AbstractEntity {
 
     @NotBlank(message = "Summary is required!")
     @NotNull
-    @Size(max = 100, message = "Summary is too long!")
+    @Size(max = 500, message = "Summary is too long!")
     private String summary;
 
     @NotBlank(message = "Entry Fee is required!")
     @NotNull
     private String entryFee;
 
-    public Event(String name, String description, String location, String competitiveLevel, String date, String summary, String entryFee) {
+    public Event(String name, String description, String city, String state, String address, String competitiveLevel, String date, String summary, String entryFee) {
         this.name = name;
         this.description = description;
-        this.location = location;
+        this.city = city;
+        this.state = state;
+        this.address = address;
         this.competitiveLevel = competitiveLevel;
         this.date = date;
         this.summary = summary;
@@ -70,12 +82,28 @@ public class Event extends AbstractEntity {
         this.description = description;
     }
 
-    public String getLocation() {
-        return location;
+    public String getCity() {
+        return city;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCompetitiveLevel() {
