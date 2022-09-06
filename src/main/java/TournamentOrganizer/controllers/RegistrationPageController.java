@@ -19,12 +19,11 @@ public class RegistrationPageController {
     @Autowired
     private RegistrationPageRepository registrationPageRepository;
 
-
     //display signup page
     @GetMapping("registrationPage")
-    public String displaySignupPage(Model model) {
-        model.addAttribute("title", "create registration"); //title?
-        model.addAttribute(new Registration());//this was to pull over object data--didn't work :-(
+    public String displayRegistrationPage(Model model) {
+        model.addAttribute("title", "create registration");
+        model.addAttribute(new Registration());
                 return "registrationPage";
     }
 
@@ -58,23 +57,3 @@ public class RegistrationPageController {
         return "login";
     }
 }
-
-
-
-/*                                            Questions left to answer/Things left to do
-
-1. How do I call the table name from the database to check if a user has already signed up?
-
-2. you need to do redirecting to the main page for processUserRegistration
-
-3. How do you set login status to false for the site, denying access to create, edit, and delete tournaments?  Is this too hight for us as our first MVP project?
-
-4. After someone has signed up, I want the user re-routed to the main page with a login status as true, giving them access to create, edit, delete.
-*/
-
-
-
-
-
-
-

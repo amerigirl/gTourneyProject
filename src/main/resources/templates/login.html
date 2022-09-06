@@ -4,7 +4,9 @@
     <!--<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'> maybe not necessary?-->
 </head>
 
-<div th:replace="fragments :: page-header"></div>
+<link th:href="@{/login.css}" rel="stylesheet" /> <!--added 9/6-->
+
+<!--<div th:replace="fragments :: page-header"></div> took this out on the login page-->
 
 <body class="container">
 
@@ -16,19 +18,21 @@
 
         <br>
         <br>
-        <form method="post" action="@{/login}">
+        <form method="post" >
 
             <div class="form-group">
+                <p th:text="${usernameLengthError}" style="color: red;"></p>
                 Username<br>
-                <input type="text" class="form-control" name="username">
+                <input type="text"  name="userLogin" class="form-control">
             </div>
 
             <div class="form-group">
+                <p th:text="${passwordLengthError}" style="color: red;"></p>
                 Password<br>
-                <input type="text" class="form-control" name="password">
+                <input type="text"  name="userPassword" class="form-control">
             </div>
             <br>
-            <button class="btn btn-success"><!--class="signin"-->
+            <button class="btn btn-success" ><!--class="signin"-->
                 Sign in
             </button>
         </form>

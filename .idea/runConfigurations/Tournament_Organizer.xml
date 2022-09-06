@@ -1,6 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Tournament-Organizer" type="Application" factoryName="Application">
     <option name="MAIN_CLASS_NAME" value="TournamentOrganizer.TournamentOrganizerApplication" />
+    <module name="Tournament_Organizer.main" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="TournamentOrganizer.*" />
