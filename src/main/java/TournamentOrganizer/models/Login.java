@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+
 @Entity
 public class Login extends AbstractEntity {
 
@@ -25,9 +26,28 @@ public class Login extends AbstractEntity {
     }
 
     //no arg constructor
-    public Login(){
+    public Login() {
 
     }
+////created a method for checking if a user is already registered 9/6
+//    public void isAlreadyRegistered() throws SQLException {
+//        Scanner sc = new Scanner(System.in); //not sure if this is necessary (isn't it already in the html?)
+//
+//        Connection con = DriverManager.getConnection("jdbc:mysql://localhost/golf_tournament", userLogin, userPassword);
+//        try {
+//            Statement stmt = con.createStatement();
+//
+//            System.out.println("userLogin: ");
+//            userLogin = sc.next(); //the login name the user gives me
+//
+//            String SQL = "SELECT * FROM login WHERE userLogin='" + userLogin + "'"; //not sure about the quote setup here
+//
+//        } catch (Exception e) {
+//            System.out.println("ERROR: " + e.getMessage());
+//        }
+//
+//    }
+
 
     //getters and setters
     public String getUserLogin() {
