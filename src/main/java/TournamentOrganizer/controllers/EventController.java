@@ -19,22 +19,18 @@ public class EventController {
     private EventRepository eventRepository;
 
     @GetMapping
-    public String displayEvents(
-            Model model
-    ) {
-        String sendToTemplateViewEventsIndex = "events/index";
-
+    public String displayEvents(Model model) {
         model.addAttribute("title", "All Events");
         model.addAttribute("events", eventRepository.findAll());
+        String sendToTemplateViewEventsIndex = "events/index";
         return sendToTemplateViewEventsIndex;
     }
 
     @GetMapping(value = "create")
     public String displayCreateEventForm(Model model) {
-        String sendToTemplateViewEventsCreate =  "events/create";
-
         model.addAttribute("title", "Create Event");
         model.addAttribute(new Event());
+        String sendToTemplateViewEventsCreate =  "events/create";
         return sendToTemplateViewEventsCreate;
     }
 
@@ -45,19 +41,18 @@ public class EventController {
             Model model
     ) {
         String sendToTemplateViewEventsCreate = "events/create";
-        String redirect = "redirect:";
 
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
             return sendToTemplateViewEventsCreate;
         }
         eventRepository.save(newEvent);
+        String redirect = "redirect:";
         return redirect;
     }
 
     @GetMapping(value = "delete")
     public String displayDeleteEventForm(Model model) {
-        String sendToTemplateViewEventsDelete = "events/delete";
 
         model.addAttribute(
                 "title",
@@ -68,7 +63,7 @@ public class EventController {
                 "events",
                 eventRepository.findAll()
         );
-
+        String sendToTemplateViewEventsDelete = "events/delete";
         return sendToTemplateViewEventsDelete;
     }
 
@@ -76,13 +71,12 @@ public class EventController {
     public String processDeleteEventForm(
             @RequestParam(required = false) int[] eventIds
     ) {
-        String redirect = "redirect:";
-
         if(eventIds != null) {
             for (int id : eventIds) {
                 eventRepository.deleteById(id);
             }
         }
+        String redirect = "redirect:";
         return redirect;
     }
 
