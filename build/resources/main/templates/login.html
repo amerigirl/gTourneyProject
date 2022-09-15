@@ -10,7 +10,7 @@
 
 <body class="container">
 
-    <div class="login">
+    <div class="login col col-xl-12">
 
         <h1>Welcome Back!</h1>
 
@@ -18,19 +18,22 @@
 
         <br>
         <br>
-        <form method="post" >
+        <form method="post">
 
             <div class="form-group">
-                <p th:text="${usernameLengthError}" style="color: red;"></p>
-                Username<br>
-                <input type="text"  name="userLogin" class="form-control">
+                <label th:for="username">Username
+                    <input class="form-control"  th:field="${loginFormDTO.username}">
+                </label>
+                <p class="error" th:errors="${loginFormDTO.username}" style="color: red;"></p>
             </div>
 
             <div class="form-group">
-                <p th:text="${passwordLengthError}" style="color: red;"></p>
-                Password<br>
-                <input type="text"  name="userPassword" class="form-control">
-            </div>
+                <label th:for="password">Password
+                    <input class="form-control" th:field="${loginFormDTO.password}">
+                </label>
+                <p  th:errors="${loginFormDTO.password}" style="color: red;"></p>
+                </div>
+
             <br>
             <button class="btn btn-success" ><!--class="signin"-->
                 Sign in
