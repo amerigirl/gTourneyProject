@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<!--<head th:replace="fragments :: head"></head>-->
+<head>
+    <title>GTourney</title>
+</head>
+
 <body class="container">
-<div th:replace="fragments :: page-header"></div>
-<h1 th:replace="fragments :: title" class="text-warning">Create Event</h1>
+<div th:replace="fragments :: navbar"></div>
+<!--<div th:replace="fragments :: page-header"></div>-->
+
+<!--<h1 th:replace="fragments :: title" class="text-warning">Create Event</h1>-->
+
 <nav th:replace="fragments :: navigation"></nav>
 
 <form method="post" action="/events/create">

@@ -2,6 +2,7 @@ package TournamentOrganizer.controllers;
 
 import TournamentOrganizer.models.Event;
 import TournamentOrganizer.models.data.EventRepository;
+import TournamentOrganizer.models.dto.LoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +19,7 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
-    @GetMapping
+    @GetMapping("")
     public String displayEvents(
             Model model
     ) {
@@ -26,7 +27,8 @@ public class EventController {
 
         model.addAttribute("title", "All Events");
         model.addAttribute("events", eventRepository.findAll());
-        return sendToTemplateViewEventsIndex;
+        return "index";
+//        return sendToTemplateViewEventsIndex;
     }
 
     @GetMapping(value = "create")
