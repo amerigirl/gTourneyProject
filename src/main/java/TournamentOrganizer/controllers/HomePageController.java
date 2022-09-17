@@ -12,6 +12,6 @@ public class HomePageController {
 
     @RequestMapping("")
     public String index(Model model) {
-        return "index";
+        return "events/index2";
     }
 }
