@@ -22,10 +22,10 @@
     </div>
 
     <div class="form-group">
-        <label>Description
-            <input type="text" th:field="${event.description}" class="form-control" />
+        <label>Address
+            <input type="text" th:field="${event.address}" class="form-control" />
         </label>
-        <p style="color: red" class="error" th:errors="${event.description}"></p>
+        <p style="color: red" class="error" th:errors="${event.address}"></p>
     </div>
 
     <div class="form-group">
@@ -43,10 +43,10 @@
     </div>
 
     <div class="form-group">
-        <label>Address
-            <input type="text" th:field="${event.address}" class="form-control" />
+        <label>Description
+            <input type="text" th:field="${event.description}" class="form-control" />
         </label>
-        <p style="color: red" class="error" th:errors="${event.address}"></p>
+        <p style="color: red" class="error" th:errors="${event.description}"></p>
     </div>
 
     <div class="form-group">
@@ -54,13 +54,6 @@
             <input type="text" th:field="${event.competitiveLevel}" class="form-control" />
         </label>
         <p style="color: red" class="error" th:errors="${event.competitiveLevel}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>Date
-            <input type="date" pattern="dd/MM/yyyy" th:field="${event.date}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.date}"></p>
     </div>
 
     <div>
@@ -75,6 +68,13 @@
             <input type="text"  min="0.00" max="10000.00" step="0.01" th:field="${event.entryFee}" class="form-control" />
         </label>
         <p style="color: red" class="error" th:errors="${event.entryFee}"></p>
+    </div>
+
+    <div class="form-group">
+        <label>Date
+            <input type="date" pattern="dd/MM/yyyy" th:field="${event.date}" class="form-control" />
+        </label>
+        <p style="color: red" class="error" th:errors="${event.date}"></p>
     </div>
 
     <div class="form-group"><br>
