@@ -93,14 +93,14 @@ private static final String userSessionKey = "user";
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:";
+        return "redirect:/home";
     }
 
     @GetMapping("/login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
-        return "login";
+        return "/login";
     }
 
     @PostMapping("/login")
@@ -111,7 +111,7 @@ private static final String userSessionKey = "user";
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Log In");
-            return "login";
+            return "/login";
         }
 
     User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
@@ -119,7 +119,7 @@ private static final String userSessionKey = "user";
         if (theUser == null) {
             errors.rejectValue("username", "user.invalid", "The given username does not exist");
             model.addAttribute("title", "Log In");
-            return "login";
+            return "/login";
         }
 
         String password = loginFormDTO.getPassword();
@@ -127,12 +127,12 @@ private static final String userSessionKey = "user";
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password");
             model.addAttribute("title", "Log In");
-            return "login";
+            return "/login";
         }
 
         setUserInSession(request.getSession(), theUser);
 
-        return "redirect:";
+        return "redirect:/home";
     }
 
     @GetMapping("/logout")

@@ -2,11 +2,12 @@
 <html lang="" en xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<link th:href="@{/css/signup.css}" rel="stylesheet" />
 
-<!--<div th:replace="fragments :: page-header"></div>-->
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/signup.css">
 
 <body class="container">
+
 
 <div class="signup col col-xl-12"> <!--ask Ian about this-->
 
@@ -15,7 +16,7 @@
     <center>
         <h4 style="color: #A93226 ">Register below!</h4>
     </center>
-        <br>
+
 
     <form method="post" th:action="@{/registrationPage}">
 
@@ -47,14 +48,12 @@
             </label>
 
         </div>
-            <br>
         <button class="btn btn-success">
                 Register
         </button>
 
     </form>
 
-    <br>
     <h4>Need to login instead?</h4>
     <p><a rel="tag" href="http://localhost:8080/login">Login here!</a></p>        <!--don't forget to redirect people registration page!!-->
 

@@ -10,8 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class HomePageController {
 
-    @RequestMapping("")
-    public String index(Model model) {
-        return "events/index2";
+    @Autowired
+    private EventRepository eventRepository;
+
+    @RequestMapping("/home")
+    public String displayEvents(Model model) {
+        model.addAttribute("title", "All Events");
+        model.addAttribute("events", eventRepository.findAll());
+        String sendToTemplateViewEventsIndex = "events/homePage";
+        return sendToTemplateViewEventsIndex;
     }
 }
