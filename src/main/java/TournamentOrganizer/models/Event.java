@@ -14,9 +14,10 @@ public class Event extends AbstractEntity {
     @Size(min = 3, max = 100, message = "Name must be between 3 and 50 characters!")
     private String name;
 
-    @NotBlank(message = "Description is required!")
-    @Size(max = 500, message = "Description too long!")
-    private String description;
+    @NotBlank(message = "Address is required")
+    @NotNull
+    @Size(max = 100, message = "Address is too long!")
+    private String address;
 
     @NotBlank(message = "City is required")
     @NotNull
@@ -28,19 +29,13 @@ public class Event extends AbstractEntity {
     @Size(max = 100, message = "State is too long!")
     private String state;
 
-    @NotBlank(message = "Address is required")
-    @NotNull
-    @Size(max = 100, message = "Address is too long!")
-    private String address;
+    @NotBlank(message = "Description is required!")
+    @Size(max = 500, message = "Description too long!")
+    private String description;
 
     @NotBlank(message = "Competitive level required!")
     @NotNull
     private String competitiveLevel;
-
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @NotBlank(message = "Date is required!")
-    @NotNull
-    private String date;
 
     @NotBlank(message = "Summary is required!")
     @NotNull
@@ -51,16 +46,21 @@ public class Event extends AbstractEntity {
     @NotNull
     private String entryFee;
 
-    public Event(String name, String description, String city, String state, String address, String competitiveLevel, String date, String summary, String entryFee) {
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @NotBlank(message = "Date is required!")
+    @NotNull
+    private String date;
+
+    public Event(String name, String address, String city, String state, String description,   String competitiveLevel, String summary, String entryFee, String date) {
         this.name = name;
-        this.description = description;
+        this.address = address;
         this.city = city;
         this.state = state;
-        this.address = address;
+        this.description = description;
         this.competitiveLevel = competitiveLevel;
-        this.date = date;
         this.summary = summary;
         this.entryFee = entryFee;
+        this.date = date;
     }
 
     public Event() {
@@ -74,12 +74,12 @@ public class Event extends AbstractEntity {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
@@ -98,12 +98,12 @@ public class Event extends AbstractEntity {
         this.state = state;
     }
 
-    public String getAddress() {
-        return address;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCompetitiveLevel() {
@@ -113,15 +113,7 @@ public class Event extends AbstractEntity {
     public void setCompetitiveLevel(String competitiveLevel) {
         this.competitiveLevel = competitiveLevel;
     }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
+    
     public String getSummary() {
         return summary;
     }
@@ -136,6 +128,14 @@ public class Event extends AbstractEntity {
 
     public void setEntryFee(String entryFee) {
         this.entryFee = entryFee;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
