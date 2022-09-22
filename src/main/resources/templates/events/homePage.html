@@ -82,7 +82,9 @@ background-size: cover;">
                                     <div class="top-right"><b th:text="${event.city}"></b></div>
                                     <div class="top-right-state"><b th:text="${event.state}"></b></div>
                                     <div class="bottom-right"><b th:text="${event.entryFee}"></b></div>
-                                    <button class="button-86" role="button">More Info</button>
+                                    <a th:href="@{/events/info/{id}(id=${event.id})}">
+                                        <button type="button"class="button-86" role="button">More Info</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

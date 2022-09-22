@@ -1,16 +1,12 @@
 <!DOCTYPE html>
-<html lang="" en xmlns:th="http://www.thymeleaf.org/">
-<!--<head th:replace="fragments :: head">-->
-<!--</head>-->
-
-<link rel="stylesheet" type="text/css" href="css/login.css">
-
-<body class="container" style="
-    background-image: url('../img/background.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-">
+<html xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <title>GTourney</title>
+</head>
+<body style="background-image: url(../img/background2.jpg);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover";>
 
 <!--Importing style sheets for bootstrap, styles.css, and google icons-->
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -37,57 +33,11 @@
     </form>
     <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
 </nav>
+<!--        <p><a rel="tag" href="">Register here!</a></p>  don't forget to redirect people registration page!!-->
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <div class="login">
-
-        <h1 style="text-align: center"><b>Welcome Back!</b></h1>
-
-            <h3 style="color: #A93226; text-align: center">Please log-in</h3>
-
-        <br>
-        <form method="post">
-
-            <div class="form-group">
-                <label th:for="username" style="display:block; margin: 0 auto;">Username
-                    <input class="form-control"  th:field="${loginFormDTO.username}">
-                </label>
-                <p class="error" th:errors="${loginFormDTO.username}" style="color: red;"></p>
-            </div>
-
-            <div class="form-group">
-                <label th:for="password" style="display:block; margin: 0 auto;">Password
-                    <input class="form-control" th:field="${loginFormDTO.password}">
-                </label>
-                <p  th:errors="${loginFormDTO.password}" style="color: red;"></p>
-                </div>
-
-            <button class="btn btn-success" ><!--class="signin"-->
-                Sign in
-            </button>
-        </form>
-
-        <br>
-        <h4>Need to signup?</h4>
-        <p><a rel="tag" href="http://localhost:8080/registrationPage">Register here!</a></p>        <!--don't forget to redirect people registration page!!-->
-
-    </div>
-
-
-
+<!--This just adds some space between the page content and the navbar-->
+<div class="bottom-margin">
+</div>
 
 </body>
-
-
-
-
-
-
-
-
-
-
-
+</html>
