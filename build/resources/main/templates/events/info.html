@@ -2,17 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>GTourney</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
+
 <body style="background-image: url(../img/background2.jpg);
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover";>
-
-<!--Importing style sheets for bootstrap, styles.css, and google icons-->
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 <!--This is the navbar-->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #1877f2;">
@@ -36,8 +35,78 @@ background-size: cover";>
 <!--        <p><a rel="tag" href="">Register here!</a></p>  don't forget to redirect people registration page!!-->
 
 <!--This just adds some space between the page content and the navbar-->
-<div class="bottom-margin">
+<div id="bottom-margin">
 </div>
 
+<section class="main-content" style="
+    padding-top: 100px;
+	padding-bottom: 5px;
+	margin-left: auto;
+    margin-right: auto;
+    width: 485px;
+    height: auto;
+">
+
+    <div class="container">
+        <div class="row">
+
+            <!--            Creates a post for each object in the tournament repository-->
+<!--            <div th:each="event : ${events}">-->
+                <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12">
+                    <div class="post-block" style="background: #fff;
+	                    padding: 25px;
+                        margin-bottom: 25px;
+                        border-radius: 5px;
+                        overflow: hidden;
+                        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset, rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+                        transition: all 0.2s;
+                        width:540px;">
+
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex mb-3">
+                                <div>
+                                    <h1 class="mb-2"><b th:text="${event.name}"></b></h1>
+                                    <h5 class="mb-1 text-muted" style="display: inline-block">Event Date: </h5>
+                                    <h5 class="indent" style="display: inline-block; color: green; font-size: 15px;" th:text="${event.date}"></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="post-block__content mb-2">
+                            <div class="indent">
+                                <h2>Event Summary</h2>
+                                <p th:text="${event.summary}"></p>
+                            </div>
+                            <div class="centered">
+                            </div>
+                        </div>
+                        <hr>
+                        <h2>Event Description</h2>
+                        <div class="top-left" th:text="${event.description}"></div>
+                        <hr>
+                        <div class="post-block__comments">
+                            <div class="post-block2">
+                                <div class="post-block__content mb-2">
+                                    <h4><b>Event Location</b></h4>
+                                    <div class="top-left" th:text="${event.city} + ', ' + ${event.state}"></div>
+                                    <h4><b>Event Competition Level</b></h4>
+                                    <div class="bottom-left" th:text="${event.competitiveLevel}"></div>
+                                    <hr>
+                                    <h4><b>Event Entree Fee</b></h4>
+                                    <div class="bottom-left" th:text="${event.entryFee}"></div>
+                                    <hr>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+<!--                </div>-->
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</section>
 </body>
 </html>
