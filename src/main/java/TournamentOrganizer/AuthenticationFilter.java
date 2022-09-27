@@ -21,7 +21,7 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/home", "/login", "/registrationPage", "/logout", "/css", "/img"); //access without needing to login. What about adding the homepage?
+    private static final List<String> whitelist = Arrays.asList("/home", "/login", "/registrationPage", "/logout", "/css", "/img", "/events/info"); //access without needing to login. What about adding the homepage?
 
     //checks to see if a request is whitelisted
     private static boolean isWhitelisted(String path) {
@@ -53,10 +53,8 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         }
 
         // The user is NOT logged in
-        response.sendRedirect("/home"); //changed from login to home page
+        response.sendRedirect("/login");
+        //changed from login to home page
         return false;
     }
-
-
-
 }

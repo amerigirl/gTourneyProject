@@ -3,6 +3,10 @@
 <head>
     <title>GTourney</title>
 </head>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0" nonce="DnUQsKxr"></script>
+
 <body style="background-image: url(../img/background2.jpg);
 background-repeat: no-repeat;
 background-attachment: fixed;
@@ -20,18 +24,19 @@ background-size: cover;">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="http://localhost:8080/events">GTourney</a>
+        <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
         <div class="navbar-nav">
             <!--<a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> -->
-            <a class="nav-item nav-link" href="http://localhost:8080/events/create">Post A Tournament</a>
-            <a class="nav-item nav-link" href="#">About</a>
+            <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
+            <a class="nav-item nav-link" href="http://localhost:8080/events">List All Events</a>
         </div>
     </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit"><span class="material-symbols-outlined" style="transform: translateY(5px);">search</span></button>
-        </form>
+<!--        <form class="form-inline my-2 my-lg-0">-->
+<!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--            <button class="btn btn-primary my-2 my-sm-0" type="submit"><span class="material-symbols-outlined" style="transform: translateY(5px);">search</span></button>-->
+<!--        </form>-->
         <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
+        <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
 </nav>
 <!--        <p><a rel="tag" href="">Register here!</a></p>  don't forget to redirect people registration page!!-->
 
@@ -66,9 +71,9 @@ background-size: cover;">
                             </div>
                         </div>
                         <div class="mb-3">
-                            <div class="d-flex justify-content-between mb-2">
-                                <a href="#!" class="text-dark"><span>Share </span><span class="material-symbols-outlined" style="transform: translateY(7px)">share</span></a>
-                            </div>
+<!--                            <div class="d-flex justify-content-between mb-2">-->
+<!--                                <a href="#!" class="text-dark"><span>Share </span><span class="material-symbols-outlined" style="transform: translateY(7px)">share</span></a>-->
+<!--                            </div>-->
                         </div>
                         <hr>
                         <div class="post-block__comments">
@@ -82,7 +87,9 @@ background-size: cover;">
                                     <div class="top-right"><b th:text="${event.city}"></b></div>
                                     <div class="top-right-state"><b th:text="${event.state}"></b></div>
                                     <div class="bottom-right"><b th:text="${event.entryFee}"></b></div>
-                                    <button class="button-86" role="button">More Info</button>
+                                    <a th:href="@{/events/info/{id}(id=${event.id})}">
+                                        <button type="button"class="button-86" role="button">More Info</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -106,29 +113,18 @@ background-size: cover;">
                             <p>The tournament is a 4 person scramble and will have a shotgun start at 8 a.m. on Tuesday, August 23. The $85.00 includes 18 holes of golf, a cart, lunch, and 2 drink tickets. Club rentals are $25. Tournament open only to 2022 UPMA National Convention Registrants.</p>
                         </div>
                         <div class="centered">
-                            <img src="img/alternate.jpg" alt="Content img"/>
+                            <img src="img/golf course.png" alt="Content img"/>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <div class="d-flex justify-content-between mb-2">
-                            <!--                            <div class="d-flex">-->
-                            <!--                                <a href="#!" class="text-danger mr-2"><span><i class="fa fa-heart"></i></span></a>-->
-                            <!--                                <a href="#!" class="text-dark mr-2"><span>Comment</span></a>-->
-                            <!--                            </div>-->
-                            <a href="#!" class="text-dark"><span>Share</span></a>
-                        </div>
-                        <!--                        <p class="mb-0">Liked by <a href="#!" class="text-muted font-weight-bold">John doe</a> & <a href="#!" class="text-muted font-weight-bold">25 others</a></p>-->
+<!--                        <div class="d-flex justify-content-between mb-2">-->
+<!--                            <a href="#!" class="text-dark"><span>Share</span></a>-->
+<!--                        </div>-->
                     </div>
                     <hr>
                     <div class="post-block__comments">
-                        <!-- Comment Input -->
                         <div class="input-group mb-3">
-                            <!--                            <input type="text" class="form-control" placeholder="Add your comment">-->
-                            <!--                            <div class="input-group-append">-->
-                            <!--                                <button class="btn btn-primary" type="button" id="button-addon2"><i class="fa fa-paper-plane"></i></button>-->
-                            <!--                            </div>-->
                         </div>
-                        <!-- Comment content -->
                         <div class="post-block2">
                             <div class="post-block__content mb-2">
                                 <div class="main-post-img">
@@ -141,18 +137,6 @@ background-size: cover;">
                                 <div class="bottom-right text-muted"><b>Free</b></div>
                                 <button class="button-86" role="button">More Info</button>
                             </div>
-
-                            <!--                            <div class="d-flex mb-2">-->
-                            <!--                                <img src="img/user2.jpg" alt="User img" class="author-img author-img&#45;&#45;small mr-2">-->
-                            <!--                                <div>-->
-                            <!--                                    <h6 class="mb-1"><a href="#!" class="text-dark">John doe</a> <small class="text-muted">1m</small></h6>-->
-                            <!--                                    <p class="mb-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>-->
-                            <!--                                    <div class="d-flex">-->
-                            <!--                                        <a href="#!" class="text-dark mr-2"><span><i class="fa fa-heart-o"></i></span></a>-->
-                            <!--                                        <a href="#!" class="text-dark mr-2"><span>Reply</span></a>-->
-                            <!--                                    </div>-->
-                            <!--                                </div>-->
-                            <!--                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -178,9 +162,9 @@ background-size: cover;">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <div class="d-flex justify-content-between mb-2">
-                            <a href="#!" class="text-dark"><span>Share</span></a>
-                        </div>
+<!--                        <div class="d-flex justify-content-between mb-2">-->
+<!--                            <a href="#!" class="text-dark"><span>Share</span></a>-->
+<!--                        </div>-->
                     </div>
                     <hr>
                     <div class="post-block__comments">
@@ -223,9 +207,9 @@ background-size: cover;">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <div class="d-flex justify-content-between mb-2">
-                            <a href="#!" class="text-dark"><span>Share</span></a>
-                        </div>
+<!--                        <div class="d-flex justify-content-between mb-2">-->
+<!--                            <a href="#!" class="text-dark"><span>Share</span></a>-->
+<!--                        </div>-->
                     </div>
                     <hr>
                     <div class="post-block__comments">

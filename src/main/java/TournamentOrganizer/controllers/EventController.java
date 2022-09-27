@@ -129,4 +129,18 @@ public class EventController {
         String redirect = "redirect:";
         return redirect;
     }
+
+    @GetMapping("info/{eventId}")
+    public String displayView(Model model, @PathVariable int eventId) {
+
+        Optional optEvent = eventRepository.findById(eventId);
+        if (optEvent.isPresent()) {
+            Event event = (Event) optEvent.get();
+            model.addAttribute("event", event);
+            return "events/info";
+        } else {
+            return "redirect:../";
+        }
+    }
+
 }

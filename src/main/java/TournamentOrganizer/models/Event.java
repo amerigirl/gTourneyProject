@@ -26,11 +26,11 @@ public class Event extends AbstractEntity {
 
     @NotBlank(message = "State is required")
     @NotNull
-    @Size(max = 100, message = "State is too long!")
+    @Size(max = 2, message = "State is too long! Ex: 'MO','NY'")
     private String state;
 
     @NotBlank(message = "Description is required!")
-    @Size(max = 500, message = "Description too long!")
+    @Size(max = 1500, message = "Description too long!")
     private String description;
 
     @NotBlank(message = "Competitive level required!")
