@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
-<body class="container">
+<!--<head th:replace="fragments :: head"></head>-->
+<body style="background-image: url(../img/background2.jpg);
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;">
 
-<div th:replace="fragments :: page-header"></div>
+<div th:replace="fragments :: navbar"></div>
 <h1 th:replace="fragments :: title" class="text-warning">All Events</h1>
 
 <nav th:replace="fragments :: navigation"></nav>

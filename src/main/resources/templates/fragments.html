@@ -41,13 +41,13 @@
 <nav th:fragment="navigation" class="navbar navbar-dark bg-dark" style="margin-top: 100px; margin-bottom: 50px;">
 <!--    <h1 th:text="${title}">Tournament Organizer</h1>-->
     <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up</a></li>
-        <li><a href="/home"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-        <li><a href="/events"><span class="glyphicon glyphicon-all events"></span>All Events</a></li>
+<!--        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li>-->
+<!--        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login / Sign Up</a></li>-->
+<!--        <li><a href="/home"><span class="glyphicon glyphicon-home"></span>Home</a></li>-->
+<!--        <li><a href="/events"><span class="glyphicon glyphicon-all events"></span>All Events</a></li>-->
         <li><a href="/events/create"><span class="glyphicon glyphicon-create event"></span>Create Event</a></li>
         <li><a href="/events/delete"><span class="glyphicon glyphicon-delete event"></span>Delete Event</a></li>
-        <li><a href="/logout"><span class="glyphicon glyphicon-logout"></span>Log Out</a></li>
+<!--        <li><a href="/logout"><span class="glyphicon glyphicon-logout"></span>Log Out</a></li>-->
     </ul>
 </nav>
 
@@ -63,15 +63,16 @@
             <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
             <div class="navbar-nav">
                 <!--<a class="nav-item nav-link active" href="#">Home<span class="sr-only">(current)</span></a> -->
-                <a class="nav-item nav-link" href="http://localhost:8080/events/create">Post A Tournament</a>
-                <a class="nav-item nav-link" href="#">About</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/events">List All Events</a>
             </div>
         </div>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit"><span class="material-symbols-outlined" style="transform: translateY(5px);">search</span></button>
-        </form>
+<!--        <form class="form-inline my-2 my-lg-0">-->
+<!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+<!--            <button class="btn btn-primary my-2 my-sm-0" type="submit"><span class="material-symbols-outlined" style="transform: translateY(5px);">search</span></button>-->
+<!--        </form>-->
         <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
+        <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
     </nav>
 </div>
 </body>
