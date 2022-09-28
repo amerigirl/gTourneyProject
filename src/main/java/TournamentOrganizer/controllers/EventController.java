@@ -71,24 +71,19 @@ public class EventController {
         return "redirect:";
     }
 
+    //edit event handlers
     @GetMapping(value = "edit/{eventId}")
-    public String displayEditEventForm(
-            Model model,
-            @PathVariable int eventId
-    ) {
+    public String displayEditEventForm(Model model, @PathVariable int eventId) {
         Optional<Event> event = eventRepository.findById(eventId);
-        Event eventToBeEdit = event.get();
-        model.addAttribute("event", eventToBeEdit);
-        String title = "Edit Event: " + eventToBeEdit.getName() + " (id=" + eventToBeEdit.getId() + ")";
+        Event eventToBeEdited = event.get();
+        model.addAttribute("event", eventToBeEdited);
+        String title = "Edit Event: " + eventToBeEdited.getName() + " (id=" + eventToBeEdited.getId() + ")";
         model.addAttribute("title", title);
-        String sendToTemplateViewEventsEdit =  "events/edit";
-        return sendToTemplateViewEventsEdit;
+            return "events/edit";
     }
 
     @PostMapping(value = "edit")
     public String processEditEventForm(
-//            Model model,
-//            Errors errors,
             int eventId,
             String name,
             String description,
@@ -98,9 +93,10 @@ public class EventController {
             String competitiveLevel,
             String date,
             String summary,
-            String entryFee
-    ) {
-        String sendToTemplateViewEventsEdit =  "events/edit";
+            String entryFee) {
+
+
+        String sendToTemplateViewEventsEdit =  "events/edit"; //long name...does it even make sense?  Can it be simplified a bit?
         Optional<Event> event = eventRepository.findById(eventId);
         Event eventToBeEdit = event.get();
         eventToBeEdit.setName(name);
@@ -112,16 +108,13 @@ public class EventController {
         eventToBeEdit.setDate(date);
         eventToBeEdit.setSummary(summary);
         eventToBeEdit.setEntryFee(entryFee);
-//        if(errors.hasErrors()) {
-//            model.addAttribute("title", "Edit Event");
-//            return sendToTemplateViewEventsEdit;
-//        }
+
+
         eventRepository.save(eventToBeEdit);
-        String redirect = "redirect:";
-        return redirect;
+        return "redirect:";
     }
 
-    @GetMapping("info/{eventId}")
+    @GetMapping("info/{eventId}") //is this the redirect to the main page?? is this the fallback/optional event?
     public String displayView(Model model, @PathVariable int eventId) {
 
         Optional optEvent = eventRepository.findById(eventId);

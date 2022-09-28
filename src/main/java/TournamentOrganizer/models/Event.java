@@ -46,12 +46,12 @@ public class Event extends AbstractEntity {
     @NotNull
     private String entryFee;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "dd/mm/yyyy") //changed MM to mm
     @NotBlank(message = "Date is required!")
     @NotNull
     private String date;
 
-    public Event(String name, String address, String city, String state, String description,   String competitiveLevel, String summary, String entryFee, String date) {
+    public Event(String name, String address, String city, String state, String description, String competitiveLevel, String summary, String entryFee, String date) {
         this.name = name;
         this.address = address;
         this.city = city;

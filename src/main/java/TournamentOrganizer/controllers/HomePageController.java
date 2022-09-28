@@ -17,7 +17,6 @@ public class HomePageController {
     public String displayEvents(Model model) {
         model.addAttribute("title", "All Events");
         model.addAttribute("events", eventRepository.findAll());
-        String sendToTemplateViewEventsIndex = "events/homePage";
-        return sendToTemplateViewEventsIndex;
+        return "events/homePage";
     }
 }
