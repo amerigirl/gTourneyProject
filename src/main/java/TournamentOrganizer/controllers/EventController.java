@@ -18,20 +18,20 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
+    //display event handlers for the main page
     @GetMapping
-    public String displayEvents(Model model) {
+    public String displayAllEvents(Model model) { //changed to displayAllEvents from displayEvents
         model.addAttribute("title", "All Events");
         model.addAttribute("events", eventRepository.findAll());
-        String sendToTemplateViewEventsIndex = "events/index";
-        return sendToTemplateViewEventsIndex;
+        return "events/index";
     }
 
+    //display and process create event form handlers
     @GetMapping(value = "create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
         model.addAttribute(new Event());
-        String sendToTemplateViewEventsCreate =  "events/create";
-        return sendToTemplateViewEventsCreate;
+        return "events/create";
     }
 
     @PostMapping(value = "create")
@@ -51,33 +51,24 @@ public class EventController {
         return redirect;
     }
 
+    //delete event handlers
     @GetMapping(value = "delete")
     public String displayDeleteEventForm(Model model) {
 
-        model.addAttribute(
-                "title",
-                "Delete Event"
-        );
-
-        model.addAttribute(
-                "events",
-                eventRepository.findAll()
-        );
-        String sendToTemplateViewEventsDelete = "events/delete";
-        return sendToTemplateViewEventsDelete;
+        model.addAttribute("title", "Delete Event");
+        model.addAttribute("events", eventRepository.findAll());
+            return "events/delete";
     }
 
     @PostMapping(value = "delete")
     public String processDeleteEventForm(
-            @RequestParam(required = false) int[] eventIds
-    ) {
+            @RequestParam(required = false) int[] eventIds) {
         if(eventIds != null) {
             for (int id : eventIds) {
                 eventRepository.deleteById(id);
             }
         }
-        String redirect = "redirect:";
-        return redirect;
+        return "redirect:";
     }
 
     @GetMapping(value = "edit/{eventId}")

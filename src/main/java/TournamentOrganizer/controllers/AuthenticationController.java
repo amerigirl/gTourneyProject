@@ -25,7 +25,7 @@ public class AuthenticationController {
     UserRepository userRepository;
 
 
-//working with sessions
+//session work
 private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
@@ -57,7 +57,6 @@ private static final String userSessionKey = "user";
     }
 
 
-
     @PostMapping("/registrationPage")
     public String processRegistrationForm(@ModelAttribute @Valid RegistrationFormDTO registrationFormDTO,
                                           Errors errors, HttpServletRequest request,
@@ -68,10 +67,8 @@ private static final String userSessionKey = "user";
             return "registrationPage";
         }
 
-
-        //get username from repo
+        //get username from repository
         User existingUser = userRepository.findByUsername(registrationFormDTO.getUsername());
-
 
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
@@ -79,7 +76,7 @@ private static final String userSessionKey = "user";
             return "register";
         }
 
-        //get password and verify password info
+        //get password and verify password info from registration form
         String password = registrationFormDTO.getPassword();
         String verifyPassword = registrationFormDTO.getVerifyPassword();
 
@@ -93,7 +90,7 @@ private static final String userSessionKey = "user";
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
-        return "redirect:/home";
+        return "redirect:/login";
     }
 
     @GetMapping("/login")
