@@ -18,7 +18,7 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
-    //display event handlers for the main page
+    //displays the events from the repository
     @GetMapping
     public String displayAllEvents(Model model) { //changed to displayAllEvents from displayEvents
         model.addAttribute("title", "All Events");
@@ -26,7 +26,7 @@ public class EventController {
         return "events/index";
     }
 
-    //display and process create event form handlers
+    //creates a new event from the form
     @GetMapping(value = "create")
     public String displayCreateEventForm(Model model) {
         model.addAttribute("title", "Create Event");
@@ -35,23 +35,22 @@ public class EventController {
     }
 
     @PostMapping(value = "create")
-    public String processCreateEventForm(
-            @ModelAttribute @Valid Event newEvent,
-            Errors errors,
-            Model model
-    ) {
-        String sendToTemplateViewEventsCreate = "events/create";
+    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent, Errors errors, Model model) {
 
+        //create an error message for the user to read (or an error box in html)
         if(errors.hasErrors()) {
             model.addAttribute("title", "Create Event");
-            return sendToTemplateViewEventsCreate;
+            return "events/create";
         }
+
+        //saves newly created event to the repo
         eventRepository.save(newEvent);
-        String redirect = "redirect:";
-        return redirect;
+        return "redirect:";
     }
 
-    //delete event handlers
+
+    //calling all events from the repository
+
     @GetMapping(value = "delete")
     public String displayDeleteEventForm(Model model) {
 
@@ -60,9 +59,11 @@ public class EventController {
             return "events/delete";
     }
 
+
+    //deletes event by id from repo (since it's an array, check to make sure you can delete more than one at a time)
     @PostMapping(value = "delete")
-    public String processDeleteEventForm(
-            @RequestParam(required = false) int[] eventIds) {
+    public String processDeleteEventForm(@RequestParam(required = false) int[] eventIds) {
+
         if(eventIds != null) {
             for (int id : eventIds) {
                 eventRepository.deleteById(id);
@@ -71,53 +72,53 @@ public class EventController {
         return "redirect:";
     }
 
-    //edit event handlers
+
+    //edit event form handler --review optional rules
     @GetMapping(value = "edit/{eventId}")
     public String displayEditEventForm(Model model, @PathVariable int eventId) {
+
         Optional<Event> event = eventRepository.findById(eventId);
+
         Event eventToBeEdited = event.get();
-        model.addAttribute("event", eventToBeEdited);
-        String title = "Edit Event: " + eventToBeEdited.getName() + " (id=" + eventToBeEdited.getId() + ")";
-        model.addAttribute("title", title);
+            model.addAttribute("event", eventToBeEdited);
+            String title = "Edit Event: " + eventToBeEdited.getName() + " (id=" + eventToBeEdited.getId() + ")";
+            model.addAttribute("title", title);
             return "events/edit";
     }
 
+
+    //
     @PostMapping(value = "edit")
-    public String processEditEventForm(
-            int eventId,
-            String name,
-            String description,
-            String city,
-            String state,
-            String address,
-            String competitiveLevel,
-            String date,
-            String summary,
-            String entryFee) {
+    public String processEditEventForm(int eventId, String name, String description, String city,
+                                        String state, String address, String competitiveLevel,
+                                        String date, String summary, String entryFee) {
 
 
         String sendToTemplateViewEventsEdit =  "events/edit"; //long name...does it even make sense?  Can it be simplified a bit?
         Optional<Event> event = eventRepository.findById(eventId);
+
         Event eventToBeEdit = event.get();
-        eventToBeEdit.setName(name);
-        eventToBeEdit.setDescription(description);
-        eventToBeEdit.setCity(city);
-        eventToBeEdit.setState(state);
-        eventToBeEdit.setAddress(address);
-        eventToBeEdit.setCompetitiveLevel(competitiveLevel);
-        eventToBeEdit.setDate(date);
-        eventToBeEdit.setSummary(summary);
-        eventToBeEdit.setEntryFee(entryFee);
+            eventToBeEdit.setName(name);
+            eventToBeEdit.setDescription(description);
+            eventToBeEdit.setCity(city);
+            eventToBeEdit.setState(state);
+            eventToBeEdit.setAddress(address);
+            eventToBeEdit.setCompetitiveLevel(competitiveLevel);
+            eventToBeEdit.setDate(date);
+            eventToBeEdit.setSummary(summary);
+            eventToBeEdit.setEntryFee(entryFee);
 
 
         eventRepository.save(eventToBeEdit);
         return "redirect:";
     }
 
+
     @GetMapping("info/{eventId}") //is this the redirect to the main page?? is this the fallback/optional event?
     public String displayView(Model model, @PathVariable int eventId) {
 
         Optional optEvent = eventRepository.findById(eventId);
+
         if (optEvent.isPresent()) {
             Event event = (Event) optEvent.get();
             model.addAttribute("event", event);
