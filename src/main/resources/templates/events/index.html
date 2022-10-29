@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<!--<head th:replace="fragments :: head"></head>-->
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #1877f2;">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>
+            <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
+            <a class="nav-item nav-link" href="http://localhost:8080/events/edit">Edit Events</a>
+            <a class="nav-item nav-link" href="http://localhost:8080/events/delete">Delete Events</a>
+
+        </div>
+    </div>
+
+    <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
+    <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
+</nav>
+<style>
+    table  {
+    margin: 100px 5px 20px 5px;
+    }
+</style>
 <body style="background-image: url(../img/background2.jpg);
 background-repeat: no-repeat;
 background-attachment: fixed;
 background-size: cover;">
 
-<div th:replace="fragments :: navbar"></div>
+<div th:replace="fragments :: navbar"></div> <!--what is this...-->
 <h1 th:replace="fragments :: title" class="text-warning">All Events</h1>
-
-<nav th:replace="fragments :: navigation"></nav>
 
 
 <p th:unless="${events} and ${events.size()}">No Events!</p>
