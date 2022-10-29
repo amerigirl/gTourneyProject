@@ -13,7 +13,6 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>
             <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
-            <a class="nav-item nav-link" href="http://localhost:8080/events/edit">Edit Events</a>
             <a class="nav-item nav-link" href="http://localhost:8080/events/delete">Delete Events</a>
 
         </div>
@@ -25,6 +24,7 @@
     <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
     <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
 </nav>
+<nav th:replace="fragments :: navigation"></nav>
 
 <body class="container" style="
     background-image: url('../img/women golfing.jpg');
@@ -36,7 +36,6 @@
 <div th:replace="fragments :: navbar"></div>
 
 
-<nav th:replace="fragments :: navigation"></nav>
 
 <form method="post" action="/events/create">
     <div class="form-group">
