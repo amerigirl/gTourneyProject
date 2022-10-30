@@ -3,12 +3,7 @@
 <head th:fragment="head">
 
     <!-- Bootstrap stylesheets and script -->
-    <link th:href="@{/css/index.css}" rel="stylesheet" />
-    <link th:href="@{/css/signup.css}" rel="stylesheet" />
-    <link th:href="@{/css/login.css}" rel="stylesheet" />
-    <link th:href="@{/css/delete.css}" rel="stylesheet" />
     <link th:href="@{/css/create.css}" rel="stylesheet" />
-
     <title th:text="'Tournament Organizer' + ${title == null ? '' : ' :: ' + title}">Tournament Organizer</title>
 </head>
 
@@ -17,77 +12,82 @@
 
 <body class="container">
 
-<div class="create">
-<form method="post" action="/events/create">
-    <h1 style="text-align: center">Create Event</h1>
-    <br>
-    <div class="form-group">
-        <label>Name
-            <input type="text" th:field="${event.name}" class="form-control"/>
-        </label>
-        <p style="color: red" class="error" th:errors="${event.name}"></p>
+    <div class="create" >
+        <form method="post" action="/events/create" >
+            <br>
+            <h1 style="text-align: center">Create Your Event!</h1>
+            <br>
+            <h6 style="color: #A93226">Use the form below to create your event :) Please be as thorough as possible!</h6>
+            <br>
+            <br>
+                <div class="form-group">
+                    <label>Name
+                        <input type="text" th:field="${event.name}" class="form-control"/>
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.name}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Address
+                        <input type="text" th:field="${event.address}" class="form-control" />
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.address}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>City
+                        <input type="text" th:field="${event.city}" class="form-control" />
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.city}"></p>
+                    </div>
+
+                <div class="form-group">
+                    <label>State
+                        <input type="text" th:field="${event.state}" class="form-control" />
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.state}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Description
+                        <input type="text" th:field="${event.description}" class="form-control" />
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.description}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Competitive Level
+                        <input type="text" th:field="${event.competitiveLevel}" class="form-control" />
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.competitiveLevel}"></p>
+                </div>
+
+                <div class="form-group"> <!--added form group; it was missing-->
+                    <label>Summary
+                        <input type="text" th:field="${event.summary}" class="form-control" />
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.summary}"></p>
+                </div>
+
+                <div class="form-group"><!--added form group; it was missing-->
+                    <label>Entry Fee
+                        <input type="text"  min="0.00" max="10000.00" step="0.01" th:field="${event.entryFee}" class="form-control" />
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.entryFee}"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>Date
+                        <input type="date" pattern="dd/MM/yyyy" th:field="${event.date}" class="form-control" />
+                    </label>
+                    <p style="color: red" class="error" th:errors="${event.date}"></p>
+                </div>
+
+                <div class="form-group"><br>
+                    <input type="submit" value="CREATE" class="btn btn-success">
+                </div>
+        </form>
     </div>
 
-    <div class="form-group">
-        <label>Address
-            <input type="text" th:field="${event.address}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.address}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>City
-            <input type="text" th:field="${event.city}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.city}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>State
-            <input type="text" th:field="${event.state}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.state}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>Description
-            <input type="text" th:field="${event.description}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.description}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>Competitive Level
-            <input type="text" th:field="${event.competitiveLevel}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.competitiveLevel}"></p>
-    </div>
-
-    <div class="form-group"> <!--added form group; it was missing-->
-        <label>Summary
-            <input type="text" th:field="${event.summary}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.summary}"></p>
-    </div>
-
-    <div class="form-group"><!--added form group; it was missing-->
-        <label>Entry Fee
-            <input type="text"  min="0.00" max="10000.00" step="0.01" th:field="${event.entryFee}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.entryFee}"></p>
-    </div>
-
-    <div class="form-group">
-        <label>Date
-            <input type="date" pattern="dd/MM/yyyy" th:field="${event.date}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.date}"></p>
-    </div>
-
-    <div class="form-group"><br>
-        <input type="submit" value="CREATE" class="btn btn-success">
-    </div>
-</form>
-</div>
 </body>
 </html>

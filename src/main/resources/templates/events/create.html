@@ -3,12 +3,7 @@
 <head th:fragment="head">
 
     <!-- Bootstrap stylesheets and script -->
-    <link th:href="@{/css/index.css}" rel="stylesheet" />
-    <link th:href="@{/css/signup.css}" rel="stylesheet" />
-    <link th:href="@{/css/login.css}" rel="stylesheet" />
-    <link th:href="@{/css/delete.css}" rel="stylesheet" />
     <link th:href="@{/css/create.css}" rel="stylesheet" />
-
     <title th:text="'Tournament Organizer' + ${title == null ? '' : ' :: ' + title}">Tournament Organizer</title>
 </head>
 
@@ -16,9 +11,14 @@
 
 
 <body class="container">
-    <div class="create">
-        <form method="post" action="/events/create">
-            <h1 style="text-align: center">Create Event</h1>
+
+    <div class="create" >
+        <form method="post" action="/events/create" >
+            <br>
+            <h1 style="text-align: center">Create Your Event!</h1>
+            <br>
+            <h6 style="color: #A93226">Use the form below to create your event :) Please be as thorough as possible!</h6>
+            <br>
             <br>
                 <div class="form-group">
                     <label>Name
@@ -88,5 +88,6 @@
                 </div>
         </form>
     </div>
+
 </body>
 </html>

@@ -1,8 +1,7 @@
 .create {
-position: left: 800px; top: -100px;
-height: 980px;
-width: 400px;
-margin: left: 900px; top: 50px;
+position: relative; left: -450px; top: 70px;
+height: 1082px;
+width: 500px;
 padding: 11px 50px;
 background: white;
 background-image: linear-gradient(cream, white);
@@ -10,9 +9,8 @@ background-size: cover;
 box-shadow: 0px 30px 60px -5px #000;
 }
 
-div.create {
-outline: 5px solid black;
-
+div.create{
+outline: 4px solid black;
 }
 
 .container {
@@ -21,3 +19,4 @@ outline: 5px solid black;
     background-attachment: fixed;
     background-size: cover;
     }
+
