@@ -1,107 +1,118 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
 
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #1877f2;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>
-            <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
-            <a class="nav-item nav-link" href="http://localhost:8080/events/delete">Delete Events</a>
+<head th:fragment="head">
 
+    <!-- Bootstrap stylesheets and script -->
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/signup.css}" rel="stylesheet" />
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+    <link th:href="@{/css/delete.css}" rel="stylesheet" />
+    <title th:text="'Tournament Organizer' + ${title == null ? '' : ' :: ' + title}">Tournament Organizer</title>
+</head>
+
+<div th:fragment="navbar">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #1877f2;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>
+                <a class="nav-item nav-link" href="http://localhost:8080/events/delete">Delete Event</a>
+
+            </div>
         </div>
-    </div>
-    <!--        <form class="form-inline my-2 my-lg-0">-->
-    <!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-    <!--            <button class="btn btn-primary my-2 my-sm-0" type="submit"><span class="material-symbols-outlined" style="transform: translateY(5px);">search</span></button>-->
-    <!--        </form>-->
-    <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
-    <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
-</nav>
-
+        <!--        <form class="form-inline my-2 my-lg-0">-->
+        <!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
+        <!--            <button class="btn btn-primary my-2 my-sm-0" type="submit"><span class="material-symbols-outlined" style="transform: translateY(5px);">search</span></button>-->
+        <!--        </form>-->
+        <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
+        <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
+    </nav>
+</div>
 
 <body class="container">
-<div th:replace="fragments :: page-header"></div>
-<h1 th:replace="fragments :: title" class="text-warning">Edit Event</h1>
-<nav th:replace="fragments :: navigation"></nav>
+<h1>Edit Event</h1>
+    <div class="edit">
 
-<form method="post" th:action="@{/events/edit}">
-    <div class="form-group">
-        <label>
-            <input type="hidden" th:value="${event.id}" name="eventId" />
-        </label>
-    </div>
-    <div class="form-group">
-        <label style="color: gold">Name
-            <input type="text" th:field="${event.name}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.name}"></p>
-    </div>
+        <form method="post" th:action="@{/events/edit}">
+            <div class="form-group">
+                <label>
+                    <input type="hidden" th:value="${event.id}" name="eventId" />
+                </label>
+            </div>
+            <div class="form-group">
+                <label style="color: gold">Name
+                    <input type="text" th:field="${event.name}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.name}"></p>
+            </div>
 
-    <div class="form-group">
-        <label style="color: gold">Address
-            <input type="text" th:field="${event.address}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.address}"></p>
-    </div>
+            <div class="form-group">
+                <label style="color: gold">Address
+                    <input type="text" th:field="${event.address}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.address}"></p>
+            </div>
 
-    <div class="form-group">
-        <label style="color: gold">City
-            <input type="text" th:field="${event.city}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.city}"></p>
-    </div>
+            <div class="form-group">
+                <label style="color: gold">City
+                    <input type="text" th:field="${event.city}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.city}"></p>
+            </div>
 
-    <div class="form-group">
-        <label style="color: gold">State
-            <input type="text" th:field="${event.state}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.state}"></p>
-    </div>
+            <div class="form-group">
+                <label style="color: gold">State
+                    <input type="text" th:field="${event.state}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.state}"></p>
+            </div>
 
-    <div class="form-group">
-        <label style="color: gold">Description
-            <input type="text" th:field="${event.description}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.description}"></p>
-    </div>
+            <div class="form-group">
+                <label style="color: gold">Description
+                    <input type="text" th:field="${event.description}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.description}"></p>
+            </div>
 
-    <div class="form-group">
-        <label style="color: gold">Competitive Level
-            <input type="text" th:field="${event.competitiveLevel}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.competitiveLevel}"></p>
-    </div>
+            <div class="form-group">
+                <label style="color: gold">Competitive Level
+                    <input type="text" th:field="${event.competitiveLevel}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.competitiveLevel}"></p>
+            </div>
 
-    <div>
-        <label style="color: gold">Summary
-            <input type="text" th:field="${event.summary}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.summary}"></p>
-    </div>
+            <div>
+                <label style="color: gold">Summary
+                    <input type="text" th:field="${event.summary}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.summary}"></p>
+            </div>
 
-    <div>
-        <label style="color: gold">Entry Fee
-            <input type="text"  min="0.00" max="10000.00" step="0.01" th:field="${event.entryFee}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.entryFee}"></p>
-    </div>
+            <div>
+                <label style="color: gold">Entry Fee
+                    <input type="text"  min="0.00" max="10000.00" step="0.01" th:field="${event.entryFee}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.entryFee}"></p>
+            </div>
 
-    <div class="form-group">
-        <label style="color: gold">Date
-            <input type="date" pattern="dd/MM/yyyy" th:field="${event.date}" class="form-control" />
-        </label>
-        <p style="color: red" class="error" th:errors="${event.date}"></p>
-    </div>
+            <div class="form-group">
+                <label style="color: gold">Date
+                    <input type="date" pattern="dd/MM/yyyy" th:field="${event.date}" class="form-control" />
+                </label>
+                <p style="color: red" class="error" th:errors="${event.date}"></p>
+            </div>
 
-    <div class="form-group"><br>
-        <input type="submit" value="EDIT" class="btn btn-success">
+            <div class="form-group"><br>
+                <input type="submit" value="EDIT" class="btn btn-success">
+            </div>
+        </form>
     </div>
-</form>
-
 </body>
 </html>
