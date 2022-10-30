@@ -1,46 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<!--<head th:replace="fragments :: head"></head>-->
-<head>
-    <title>GTourney</title>
+<head th:fragment="head">
+
+    <!-- Bootstrap stylesheets and script -->
+    <link th:href="@{/css/index.css}" rel="stylesheet" />
+    <link th:href="@{/css/signup.css}" rel="stylesheet" />
+    <link th:href="@{/css/login.css}" rel="stylesheet" />
+    <link th:href="@{/css/delete.css}" rel="stylesheet" />
+    <link th:href="@{/css/create.css}" rel="stylesheet" />
+
+    <title th:text="'Tournament Organizer' + ${title == null ? '' : ' :: ' + title}">Tournament Organizer</title>
 </head>
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #1877f2;">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
-        <div class="navbar-nav">
-            <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>
-            <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
-            <a class="nav-item nav-link" href="http://localhost:8080/events/delete">Delete Events</a>
 
-        </div>
-    </div>
-    <!--        <form class="form-inline my-2 my-lg-0">-->
-    <!--            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-    <!--            <button class="btn btn-primary my-2 my-sm-0" type="submit"><span class="material-symbols-outlined" style="transform: translateY(5px);">search</span></button>-->
-    <!--        </form>-->
-    <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
-    <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
-</nav>
-<nav th:replace="fragments :: navigation"></nav>
-
-<body class="container" style="
-    background-image: url('../img/women golfing.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-">
-<!--<body class="container">-->
 <div th:replace="fragments :: navbar"></div>
 
 
+<body class="container">
 
+<div class="create">
 <form method="post" action="/events/create">
+    <h1 style="text-align: center">Create Event</h1>
+    <br>
     <div class="form-group">
         <label>Name
-            <input type="text" th:field="${event.name}" class="form-control" />
+            <input type="text" th:field="${event.name}" class="form-control"/>
         </label>
         <p style="color: red" class="error" th:errors="${event.name}"></p>
     </div>
@@ -80,14 +63,14 @@
         <p style="color: red" class="error" th:errors="${event.competitiveLevel}"></p>
     </div>
 
-    <div>
+    <div class="form-group"> <!--added form group; it was missing-->
         <label>Summary
             <input type="text" th:field="${event.summary}" class="form-control" />
         </label>
         <p style="color: red" class="error" th:errors="${event.summary}"></p>
     </div>
 
-    <div>
+    <div class="form-group"><!--added form group; it was missing-->
         <label>Entry Fee
             <input type="text"  min="0.00" max="10000.00" step="0.01" th:field="${event.entryFee}" class="form-control" />
         </label>
@@ -105,6 +88,6 @@
         <input type="submit" value="CREATE" class="btn btn-success">
     </div>
 </form>
-
+</div>
 </body>
 </html>

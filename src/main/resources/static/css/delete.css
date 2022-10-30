@@ -17,3 +17,7 @@ box-shadow: 0px 30px 60px -5px #000;
     margin-left: auto;
     margin-top: 300px;
 }
+
+div.delete {
+outline: 5px solid black;
+}
