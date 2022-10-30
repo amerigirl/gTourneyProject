@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
-
-
 <head th:fragment="head">
 
     <!-- Bootstrap stylesheets and script -->
-
     <link th:href="@{/css/index.css}" rel="stylesheet" />
     <link th:href="@{/css/signup.css}" rel="stylesheet" />
     <link th:href="@{/css/login.css}" rel="stylesheet" />
     <link th:href="@{/css/delete.css}" rel="stylesheet" />
     <title th:text="'Tournament Organizer' + ${title == null ? '' : ' :: ' + title}">Tournament Organizer</title>
 </head>
+
 <div th:fragment="navbar">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -37,3 +35,27 @@
         <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
     </nav>
 </div>
+
+
+<body class="container">
+    <div class="delete">
+        <h1 style="text-align: center">Delete An Event</h1>
+        <br>
+        <h4 style="color: #A93226">Choose an event to delete.  This action cannot be undone, so please be sure!</h4>
+        <br>
+        <form method="post" >
+            <th:block th:each="event : ${events}">
+                <div class="form-group">
+                    <label>
+                        <span th:text="${event.name}"></span>
+                        <input type="checkbox" name="eventIds" th:value="${event.id}"/>
+                    </label>
+                </div>
+            </th:block>
+
+            <input type="submit" value="DELETE" class="btn btn-danger"/>
+
+        </form>
+    </div>
+</body>
+</html>
