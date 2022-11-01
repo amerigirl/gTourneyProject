@@ -1,15 +1,25 @@
 .edit {
-position: relative; left: -100px; top: 50px;
-
+position: relative; left: -500px; top: -200px;
+height: 1030px;
+width: 450px;
+padding: 11px 50px;
+background: white;
+background-image: linear-gradient(cream, white);
+background-size: cover;
+box-shadow: 0px 30px 60px -5px #000;
 }
 
-body {
+div.edit{
+outline: 4px solid black;
+}
+
+
+.body {
 background-image: url('../img/golfCourse.png');
-);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
 
 }
+
+
+
 
 
