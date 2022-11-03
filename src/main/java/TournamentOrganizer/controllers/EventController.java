@@ -56,8 +56,7 @@ public class EventController {
 
         model.addAttribute(
                 "title",
-                "Delete Event"
-        );
+                "Delete Event");
 
         model.addAttribute(
                 "events",
@@ -68,9 +67,7 @@ public class EventController {
     }
 
     @PostMapping(value = "delete")
-    public String processDeleteEventForm(
-            @RequestParam(required = false) int[] eventIds
-    ) {
+    public String processDeleteEventForm(@RequestParam(required = false) int[] eventIds) {
         if(eventIds != null) {
             for (int id : eventIds) {
                 eventRepository.deleteById(id);
@@ -83,8 +80,7 @@ public class EventController {
     @GetMapping(value = "edit/{eventId}")
     public String displayEditEventForm(
             Model model,
-            @PathVariable int eventId
-    ) {
+            @PathVariable int eventId) {
         Optional<Event> event = eventRepository.findById(eventId);
         Event eventToBeEdit = event.get();
         model.addAttribute("event", eventToBeEdit);

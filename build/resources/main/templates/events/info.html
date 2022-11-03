@@ -21,14 +21,15 @@ background-size: cover";>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
         <div class="navbar-nav">
-            <a class="nav-item nav-link" href="http://localhost:8080/events/create">Post A Tournament</a>
-            <a class="nav-item nav-link" href="#">About</a>
+            <a class="nav-item nav-link" href="http://localhost:8080/about">About</a>
+            <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>
+            <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create an Event!</a>
+
         </div>
     </div>
 
     <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Sign In <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
 </nav>
-<!--        <p><a rel="tag" href="">Register here!</a></p>  don't forget to redirect people registration page!!-->
 
 <!--This just adds some space between the page content and the navbar-->
 <div id="bottom-margin">
@@ -58,7 +59,7 @@ background-size: cover";>
                         <div class="d-flex justify-content-between">
                             <div class="d-flex mb-3">
                                 <div>
-                                    <h1 class="mb-2"><b th:text="${event.name}"></b></h1>
+                                    <h1 class="mb-2" style="color: #0008B" th:text="${event.name}"> </h1>
                                     <h5 class="mb-1 text-muted" style="display: inline-block">Event Date: </h5>
                                     <h5 class="indent" style="display: inline-block; color: green; font-size: 15px;" th:text="${event.date}"></h5>
                                 </div>
@@ -67,25 +68,26 @@ background-size: cover";>
                         <hr>
                         <div class="post-block__content mb-2">
                             <div class="indent">
-                                <h2>Event Summary</h2>
+                                <h5 style="color: #800020">Event Summary</h5>
                                 <p th:text="${event.summary}"></p>
                             </div>
                             <div class="centered">
                             </div>
                         </div>
                         <hr>
-                        <h2>Event Description</h2>
+                        <h5 style="color: #800020">Description</h5>
                         <div class="top-left" th:text="${event.description}"></div>
                         <hr>
                         <div class="post-block__comments">
                             <div class="post-block2">
                                 <div class="post-block__content mb-2">
-                                    <h4><b>Event Location</b></h4>
+                                    <h5 style="color: #800020">Location</h5>
                                     <div class="top-left" th:text="${event.city} + ', ' + ${event.state}"></div>
-                                    <h4><b>Event Competition Level</b></h4>
+                                    <hr>
+                                    <h5 style="color: #800020">Competition Level</h5>
                                     <div class="bottom-left" th:text="${event.competitiveLevel}"></div>
                                     <hr>
-                                    <h4><b>Event Entree Fee</b></h4>
+                                    <h5 style="color: #800020">Entree Fee</h5>
                                     <div class="bottom-left" th:text="${event.entryFee}"></div>
                                     <hr>
 

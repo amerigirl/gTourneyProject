@@ -30,10 +30,11 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
         <div class="navbar-nav">
+            <a class="nav-item nav-link" href="http://localhost:8080/about">About</a>
             <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>
             <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
             <a class="nav-item nav-link" href="http://localhost:8080/events/delete">Delete Events</a>
-            <a class="nav-item nav-link" href="#">About</a>
+
         </div>
     </div>
 
@@ -44,12 +45,10 @@
     <div class="login">
 
         <h1 style="text-align: center"><b>Welcome Back!</b></h1>
-
-            <h5 style="color: #A93226; text-align: center">Please log-in</h5>
-
+        <br>
+        <h5 style="color: #A93226; text-align: center">Please log-in to access all of gTourney's features!</h5>
         <br>
         <form method="post">
-
             <div class="form-group">
                 <label th:for="username" style="display:block; margin: 0 auto;">Username
                     <input class="form-control"  th:field="${loginFormDTO.username}">
@@ -69,6 +68,7 @@
             </button>
         </form>
 
+        <br>
         <br>
         <h4>Need to signup?</h4>
         <p><a rel="tag" href="http://localhost:8080/registrationPage">Register here!</a></p>        <!--don't forget to redirect people registration page!!-->
