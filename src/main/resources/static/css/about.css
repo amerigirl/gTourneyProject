@@ -1,4 +1,19 @@
+.about {
+position: relative; right: -550px; top: 100px;
+height: 260px;
+width: 1000px;
+padding: 11px 50px;
+background-image: linear-gradient(cream, white);
+background-size: cover;
+outline: 4px solid black;
+box-shadow: 0px 10px 10px -5px #000;
+}
 
-body {
 
+
+
+.container {
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;
 }

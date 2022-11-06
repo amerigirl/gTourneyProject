@@ -18,6 +18,7 @@ public class EventController {
     @Autowired
     private EventRepository eventRepository;
 
+    //event controllers and handling
     @GetMapping
     public String displayEvents(Model model) {
         model.addAttribute("title", "All Events");
@@ -51,6 +52,7 @@ public class EventController {
         return redirect;
     }
 
+    //delete controllers and handling
     @GetMapping(value = "delete")
     public String displayDeleteEventForm(Model model) {
 
@@ -77,6 +79,7 @@ public class EventController {
         return redirect;
     }
 
+    //edit controllers and handling
     @GetMapping(value = "edit/{eventId}")
     public String displayEditEventForm(
             Model model,
@@ -126,6 +129,7 @@ public class EventController {
         return redirect;
     }
 
+    //backup/optional event else redirect
     @GetMapping("info/{eventId}")
     public String displayView(Model model, @PathVariable int eventId) {
 

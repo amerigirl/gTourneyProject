@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 @Entity
 public class Event extends AbstractEntity {
 
+//event parameters and settings
     @NotBlank(message = "Name is required!")
     @NotNull
     @Size(min = 3, max = 100, message = "Name must be between 3 and 50 characters!")
@@ -51,6 +52,8 @@ public class Event extends AbstractEntity {
     @NotNull
     private String date;
 
+    //event constructor
+
     public Event(String name, String address, String city, String state, String description,   String competitiveLevel, String summary, String entryFee, String date) {
         this.name = name;
         this.address = address;
@@ -63,9 +66,11 @@ public class Event extends AbstractEntity {
         this.date = date;
     }
 
+    //no arg constructor for the backend
     public Event() {
     }
 
+    //getters and setters
     public String getName() {
         return name;
     }
@@ -138,6 +143,7 @@ public class Event extends AbstractEntity {
         this.date = date;
     }
 
+    //toString
     @Override
     public String toString() {
         return name;

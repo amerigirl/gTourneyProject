@@ -8,7 +8,6 @@
     <link th:href="@{/css/signup.css}" rel="stylesheet" />
     <link th:href="@{/css/login.css}" rel="stylesheet" />
     <link th:href="@{/css/delete.css}" rel="stylesheet" />
-    <title th:text="'Tournament Organizer' + ${title == null ? '' : ' :: ' + title}">Tournament Organizer</title>
 </head>
 
 <div th:fragment="navbar">
@@ -21,6 +20,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
             <div class="navbar-nav">
+                <a class="nav-item nav-link" href="http://localhost:8080/home">Home</a>
                 <a class="nav-item nav-link" href="http://localhost:8080/about">About</a>
                 <a class="nav-item nav-link" href="http://localhost:8080/events/create">Create Event</a>
                 <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>

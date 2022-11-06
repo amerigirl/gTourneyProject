@@ -14,6 +14,7 @@ public class HomePageController {
     @Autowired
     private EventRepository eventRepository;
 
+    //home page controllers and handling
     @RequestMapping("/home")
     public String displayEvents(Model model) {
         model.addAttribute("title", "All Events");
@@ -22,10 +23,5 @@ public class HomePageController {
         return sendToTemplateViewEventsIndex;
     }
 
-    @GetMapping(value = "about")
-    public String displayAboutPage(Model model) {
-        model.addAttribute("title", "about");
-        String viewAboutPage = "/about";
-        return viewAboutPage;
-    }
+
 }

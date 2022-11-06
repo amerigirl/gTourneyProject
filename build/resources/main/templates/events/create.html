@@ -4,7 +4,6 @@
 
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/create.css}" rel="stylesheet" />
-    <title th:text="'Tournament Organizer' + ${title == null ? '' : ' :: ' + title}">Tournament Organizer</title>
 </head>
 
 <div th:fragment="navbar">
@@ -17,6 +16,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <a class="navbar-brand" href="http://localhost:8080/home">GTourney</a>
             <div class="navbar-nav">
+                <a class="nav-item nav-link" href="http://localhost:8080/home">Home</a>
                 <a class="nav-item nav-link" href="http://localhost:8080/about">About</a>
                 <a class="nav-item nav-link" href="http://localhost:8080/events">All Events</a>
                 <a class="nav-item nav-link" href="http://localhost:8080/events/delete">Delete Event</a>

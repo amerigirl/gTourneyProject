@@ -21,7 +21,8 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
     @Autowired
     AuthenticationController authenticationController;
 
-    private static final List<String> whitelist = Arrays.asList("/about", "/home", "/login", "/registrationPage", "/logout", "/css", "/img", "/events/info"); //access without needing to login. What about adding the homepage?
+    //whitelisted pages--user can access without logging in
+    private static final List<String> whitelist = Arrays.asList("/about", "/home", "/login", "/registrationPage", "/logout", "/css", "/img", "/events/info");
 
     //checks to see if a request is whitelisted
     private static boolean isWhitelisted(String path) {
@@ -33,15 +34,16 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         return false;
     }
 
-
+    //prehandle request to servlet
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response,
                              Object handler) throws IOException {
 
-        //don't require sign-in for whitelisted pages
+        //don't require sign-in for whitelisted pages; true means the request can proceed
+
         if (isWhitelisted(request.getRequestURI())) {
-            return true; //true means the request can proceed
+            return true;
         }
 
         HttpSession session = request.getSession();
@@ -54,7 +56,6 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
 
         // The user is NOT logged in
         response.sendRedirect("/login");
-        //changed from login to home page
         return false;
     }
 }

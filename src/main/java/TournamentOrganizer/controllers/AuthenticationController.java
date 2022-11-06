@@ -25,7 +25,7 @@ public class AuthenticationController {
     UserRepository userRepository;
 
 
-//working with sessions
+//working with sessions for the user
 private static final String userSessionKey = "user";
 
     public User getUserFromSession(HttpSession session) {
@@ -47,7 +47,7 @@ private static final String userSessionKey = "user";
         session.setAttribute(userSessionKey, user.getId());
     }
 
-    //registration page controllers
+    //registration page controllers and handling
 
     @GetMapping("/registrationPage")
     public String displayRegistrationForm(Model model) {
@@ -89,12 +89,15 @@ private static final String userSessionKey = "user";
                 return "registrationPage";
             }
 
+        // saves a user to the repo
         User newUser = new User(registrationFormDTO.getUsername(), registrationFormDTO.getPassword());
         userRepository.save(newUser);
         setUserInSession(request.getSession(), newUser);
 
         return "redirect:/home";
     }
+
+    //login page controllers and handling(mirrors registration page controllers)
 
     @GetMapping("/login")
     public String displayLoginForm(Model model) {
@@ -114,10 +117,12 @@ private static final String userSessionKey = "user";
             return "/login";
         }
 
+        //get the user from the repo and error handling
+
     User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
 
         if (theUser == null) {
-            errors.rejectValue("username", "user.invalid", "The given username does not exist");
+            errors.rejectValue("username", "user.invalid", "Username does not exist. Please register or try again");
             model.addAttribute("title", "Log In");
             return "/login";
         }
@@ -129,12 +134,13 @@ private static final String userSessionKey = "user";
             model.addAttribute("title", "Log In");
             return "/login";
         }
-
+        //give user permissions by setting the user in session
         setUserInSession(request.getSession(), theUser);
 
         return "redirect:/home";
     }
 
+    //log user out
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
