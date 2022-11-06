@@ -8,7 +8,7 @@
 </head>
 
 
-<div th:fragment="navbar"/>
+<div th:fragment="navbar">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #1877f2;">
@@ -26,13 +26,34 @@
             </div>
         </div>
 
-        <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/login";> Login <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
+        <a class="nav-item nav-link" style="transform: translateY(-5px); color: white" href="http://localhost:8080/logout";> Logout <span class="material-symbols-outlined" style="transform: translateY(6px); width: 10px"> account_circle</span></a>
     </nav>
 </div>
 
+<style>
+
+.body {
+background-image: url('../img/welcomePage.jpg');
+background-repeat: no-repeat;
+background-attachment: fixed;
+background-size: cover;">
+}
+
+.about {
+position: relative; right: -550px; top: 100px;
+height: 260px;
+width: 1000px;
+padding: 11px 50px;
+background-image: linear-gradient(cream, white);
+background-size: cover;
+outline: 4px solid black;
+box-shadow: 0px 10px 10px -5px #000;
+}
+
+</style>
 
 
-<body class="about">
+<body class="body">
 
 
 <br>
@@ -41,8 +62,9 @@
 <br>
 <br>
 
-<div >
+<div class="about">
     <h4>Welcome to gTourney!</h4>
 </div>
+
 </body>
 </html>
